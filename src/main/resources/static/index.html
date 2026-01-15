@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>Registry UI</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/format.css" type="text/css">
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+	<script type="text/javascript" src="js/common.js"></script>
+
+	<script type="module" src="js/imports.js"></script>
+	<!--script type="text/javascript" src="js/app.js"></script-->
+	<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', (event) => {
+			let app = new App();
+			app.init();
+		});
+	</script>
+</head>
+<body>
+
+<script type="text/babel">
+	// Your React code here
+	const element = <h1>Hello, world!</h1>;
+	ReactDOM.createRoot(document.getElementById('root')).render(element);
+</script>
+
+<div th:each="repo:${repos}" th:remove="tag">
+
+	<span class="bold" th:text="${repo}"></span><br/>
+	<table id="|repo_${repo}|">
+		<tr>
+			<th style="width: 50px" class="left-line"><i class="fa fa-trash-o glyph" data-repo="${repo}" onclick="registry.app.deleteTags(this.getAttribute('data-repo'))"></i></th>
+			<th style="width: 100px">tag</th>
+			<th style="width: 450px">layers</th>
+		</tr>
+		<tr th:each="tag:${tags.get(repo)}">
+			<td style="text-align: center" class="left-line"><input type="checkbox" th:name="|${repo}:${tag}|"></td>
+			<td><span class="ref" th:data-repo="|${repo}:${tag}|" onclick="registry.app.manifest(this.getAttribute('data-repo'))" th:text="${tag}"></span></td>
+			<td th:id="|layers_${repo}:${tag}|"></td>
+		</tr>
+	</table>
+	<br/><br/>
+</div>
+
+<div id="root"></div>
+
+</body>
+</html>

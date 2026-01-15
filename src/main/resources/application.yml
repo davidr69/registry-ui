@@ -1,0 +1,13 @@
+---
+registry:
+  host: http://pi4apps.lavacro.net:5000
+  cache:
+    timeout: 300
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+    health:
+      enabled: true

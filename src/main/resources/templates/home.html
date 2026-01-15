@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Registry UI</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i">
+	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" type="text/css">
+	<link rel="stylesheet" href="css/format.css" type="text/css">
+
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+
+</head>
+<body>
+
+<div th:each="repo:${repos}" th:remove="tag">
+
+<span class="bold" th:text="${repo}"></span><br/>
+<table th:id="|repo_${repo}|">
+	<tr>
+		<th style="width: 50px" class="left-line"><i class="fa fa-trash-o glyph" th:data-repo="${repo}" onclick="registry.app.deleteTags(this.getAttribute('data-repo'))"></i></th>
+		<th style="width: 100px">tag</th>
+		<th style="width: 450px">layers</th>
+	</tr>
+	<tr th:each="tag:${tags.get(repo)}">
+		<td style="text-align: center" class="left-line"><input type="checkbox" th:name="|${repo}:${tag}|"></td>
+		<td><span class="ref" th:data-repo="|${repo}:${tag}|" onclick="registry.app.manifest(this, this.getAttribute('data-repo'))" th:text="${tag}"></span></td>
+		<td th:id="|layers_${repo}:${tag}|"></td>
+	</tr>
+</table>
+<br/><br/>
+</div>
+
+</body>
+</html>

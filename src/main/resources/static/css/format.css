@@ -1,0 +1,70 @@
+td,body,input,select {
+	font-size: 0.85rem;
+	font-family: "Open Sans", "sans-serif";
+	font-weight: 400;
+}
+
+.bold {
+	font-weight: 700;
+}
+
+table {
+	border-spacing: 0px;
+	background-color: #f0f0f0;
+}
+
+th {
+	background-color: #d0d0d0;
+	border-top: 1px solid #808080;
+	border-bottom: 1px solid #808080;
+	border-right: 1px solid #808080;
+}
+
+td {
+	font-size: 0.75rem;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	padding: 3px !important;
+	border-bottom: 1px solid #808080;
+	border-right: 1px solid #808080;
+	vertical-align: top;
+}
+
+tr:nth-child(odd) td {
+	background-color: #f0f0ff;
+}
+
+tr:nth-child(even) td {
+	background-color: #ffffff;
+}
+
+.thead {
+	background-color: #c0c0b0;
+	padding: 2px;
+	font-size: 0.75rem;
+	font-weight: 700;
+	border-top: 1px solid #c0c0c0;
+}
+
+.left-line {
+	border-left: 1px solid #808080;
+}
+
+.glyph, .glyph:visited {
+        color:  #c04040;
+        font-weight: 700;
+}
+
+.glyph:hover {
+        color:  #d0b070;
+}
+
+.ref {
+	cursor: default;
+	color:	#000000;
+}
+
+.ref:hover {
+	cursor: pointer;
+	color:	#e0a060;
+}
